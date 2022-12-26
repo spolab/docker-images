@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  GOLANG_BUILD_IMAGE: ghcr.io/spolab/golab-builder:$(date +%s)
+  GOLANG_BUILD_IMAGE: ghcr.io/spolab/golab-builder:${{ github.run_id }}
 
 jobs:
   golang-build:
