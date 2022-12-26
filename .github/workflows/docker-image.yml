@@ -1,4 +1,4 @@
-name: Docker Image CI
+name: Build the images
 
 on:
   push:
@@ -6,15 +6,15 @@ on:
   pull_request:
     branches: [ "main" ]
 
-jobs:
+env:
+  golang-build-image: gchr.io/spolab/golab-builder:$(date +%s)
 
+jobs:
   golang-build:
     runs-on: ubuntu-latest
-    environment:
-      - IMAGE_NAME: ghcr.io/spolab/golang-build:$(date +%s)
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build --file golang-build/Dockerfile --tag $(IMAGE_NAME) .
+      run: docker build --file golang-build/Dockerfile --tag ${{golang-build-image}} .
     - name: Push the Docker image
-      run: docker push $(IMAGE_NAME)
+      run: docker push ${{golang-build-image}}
