@@ -1,5 +1,9 @@
 FROM alpine:latest
 
+LABEL org.opencontainers.image.source=https://github.com/spolab/docker-images
+LABEL org.opencontainers.image.description="Golang Build Toolbox"
+LABEL org.opencontainers.image.licenses=MIT
+
 ARG DIR_HOME=/build
 
 RUN \
