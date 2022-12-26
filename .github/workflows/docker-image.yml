@@ -7,7 +7,7 @@ on:
     branches: [ "main" ]
 
 env:
-  golang-build-image: gchr.io/spolab/golab-builder:$(date +%s)
+  GOLANG_BUILD_IMAGE: ghcr.io/spolab/golab-builder:$(date +%s)
 
 jobs:
   golang-build:
@@ -15,6 +15,6 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build --file golang-build/Dockerfile --tag ${{golang-build-image}} .
+      run: docker build --file golang-build/Dockerfile --tag ${{GOLANG_BUILD_IMAGE}} .
     - name: Push the Docker image
-      run: docker push ${{golang-build-image}}
+      run: docker push ${{GOLANG_BUILD_IMAGE}}
