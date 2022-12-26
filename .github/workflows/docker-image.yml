@@ -17,6 +17,10 @@ jobs:
     - name: Build the Docker image
       run: docker build --file golang-build/Dockerfile --tag $GOLANG_BUILD_IMAGE .
     - name: Login to the container repository
-      run: echo $PAT | docker login ghcr.io -u USERNAME --password-stdin
+      uses: docker/login-action@v2.1.0
+      with:
+        registry: ghcr.io    
+        user: spolab
+        password: $PAT
     - name: Push the Docker image
       run: docker push $GOLANG_BUILD_IMAGE
