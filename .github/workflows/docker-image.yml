@@ -20,7 +20,7 @@ jobs:
       uses: docker/login-action@v2.1.0
       with:
         registry: ghcr.io    
-        user: spolab
+        username: spolab
         password: $PAT
     - name: Push the Docker image
       run: docker push $GOLANG_BUILD_IMAGE
