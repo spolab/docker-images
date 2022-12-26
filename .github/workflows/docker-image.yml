@@ -9,12 +9,12 @@ on:
 jobs:
 
   golang-build:
-
     runs-on: ubuntu-latest
-
+    environment:
+      - IMAGE_NAME: ghcr.io/spolab/golang-build:$(date +%s)
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build --file golang-build/Dockerfile --tag spolab/golang-build:$(date +%s) .
+      run: docker build --file golang-build/Dockerfile --tag $(IMAGE_NAME) .
     - name: Push the Docker image
-      run: docker push spolab/golang-build:$(date +%s)
+      run: docker push $(IMAGE_NAME)
