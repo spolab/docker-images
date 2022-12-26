@@ -21,6 +21,6 @@ jobs:
       with:
         registry: ghcr.io    
         username: spolab
-        password: $PAT
+        password: ${{ secrets.PAT }}
     - name: Push the Docker image
       run: docker push $GOLANG_BUILD_IMAGE
