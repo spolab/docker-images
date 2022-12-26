@@ -17,6 +17,6 @@ jobs:
     - name: Build the Docker image
       run: docker build --file golang-build/Dockerfile --tag $GOLANG_BUILD_IMAGE .
     - name: Login to the container repository
-      run: echo $GITHUB_TOKEN | docker login ghcr.io -u USERNAME --password-stdin
+      run: echo $PAT | docker login ghcr.io -u USERNAME --password-stdin
     - name: Push the Docker image
       run: docker push $GOLANG_BUILD_IMAGE
