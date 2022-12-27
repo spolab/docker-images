@@ -8,7 +8,7 @@ on:
 
 env:
   GOLANG_BUILD_IMAGE: ghcr.io/spolab/golang-builder:v0.0.1
-  GOLANG_RUNTIME_IMAGE: ghcr.io/spolab/golang-runtime:v0.0.1
+  GOLANG_RUNTIME_IMAGE: ghcr.io/spolab/golang-runtime:v0.0.2
 
 jobs:
   golang-build:
