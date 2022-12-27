@@ -16,7 +16,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Build the Docker image
-      run: docker build --file golang-build/Dockerfile --tag $GOLANG_BUILD_IMAGE .
+      run: docker build --file golang-builder/Dockerfile --tag $GOLANG_BUILD_IMAGE .
     - name: Login to the container repository
       uses: docker/login-action@v2.1.0
       with:
