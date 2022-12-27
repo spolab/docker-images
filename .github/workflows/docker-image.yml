@@ -39,4 +39,4 @@ jobs:
         username: spolab
         password: ${{ secrets.PAT }}
     - name: Push the Docker image
-      run: docker push $GOLANG_BUILD_IMAGE
+      run: docker push $GOLANG_RUNTIME_IMAGE
