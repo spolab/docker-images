@@ -6,7 +6,9 @@ LABEL org.opencontainers.image.licenses=MIT
 
 ARG DIR_HOME=/build
 
-RUN \
+ENV GOPATH=/usr/local/share/go
+
+RUN mkdir -p ${GOPATH} && \
 # Update the operating system image
     apk update && \
     apk upgrade && \
@@ -14,6 +16,7 @@ RUN \
     apk add --no-cache go make protobuf
 
 RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28 && \
-    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1
+    go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1 && \
+    ln -s ${GOPATH}/bin/* /usr/local/bin
 
 WORKDIR ${DIR_HOME}
