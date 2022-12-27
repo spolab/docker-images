@@ -11,11 +11,7 @@ RUN \
     apk update && \
     apk upgrade && \
 # Add the required tools
-    apk add --no-cache go make protobuf && \
-# Create the build user
-    adduser -h ${DIR_HOME} -D build
-
-USER build
+    apk add --no-cache go make protobuf
 
 RUN go install google.golang.org/protobuf/cmd/protoc-gen-go@v1.28 && \
     go install google.golang.org/grpc/cmd/protoc-gen-go-grpc@v1
